@@ -13,3 +13,5 @@
 [JS 練習 - Exchange Rate Calculator](https://mjeddie.github.io/my-projects/Exchange_Rate_Calculator/index.html)
 
 [JS 練習 - Expense Tracker](https://mjeddie.github.io/my-projects/Expense_Tracker/index.html)
+
+[JS 練習 - Music Player](https://mjeddie.github.io/my-projects/Music_Player/index.html)
