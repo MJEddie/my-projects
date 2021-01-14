@@ -15,7 +15,14 @@ function remainTime() {
     $('#minutes').text(min);
     $('#hours').text(hour);
     $('#days').text(day);
-    console.log(day, hour, min, sec)
 }
 
-remainTime();
+const intervalId = setInterval(() => {
+        const result = countDownTime - (new Date());
+        if (result < 0) {
+            clearInterval(intervalId);
+        } else {
+            remainTime();
+        }
+    },
+    1000);
