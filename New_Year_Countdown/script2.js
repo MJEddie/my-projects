@@ -11,10 +11,14 @@ function remainTime() {
     const hour = Math.floor(result / 1000 / 60 / 60) % 24;
     const day = Math.floor(result / 1000 / 60 / 60 / 24);
 
-    $('#seconds').text(sec);
-    $('#minutes').text(min);
-    $('#hours').text(hour);
-    $('#days').text(day);
+    $('#seconds').text(formatTime(sec));
+    $('#minutes').text(formatTime(min));
+    $('#hours').text(formatTime(hour));
+    $('#days').text(formatTime(day));
+}
+
+function formatTime(time) {
+    return time < 10 ? `0${time}` : time;
 }
 
 const intervalId = setInterval(() => {
