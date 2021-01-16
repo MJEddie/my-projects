@@ -4,6 +4,7 @@ function randomWords() {
         .then(data => {
             const words = data.result.results;
             let word = words[Math.floor(Math.random() * words.length)].F_Name_En;
+            $('h1').text(word);
         })
 
 }
