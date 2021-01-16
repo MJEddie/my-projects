@@ -3,7 +3,7 @@ function randomWords() {
         .then(res => res.json())
         .then(data => {
             const words = data.result.results;
-
+            let word = words[Math.floor(Math.random() * words.length)].F_Name_En;
         })
 
 }
