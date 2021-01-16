@@ -6,6 +6,12 @@ const movieSelect = $('#movie');
 
 let ticketPrice = parseInt(movieSelect.val());
 
+// Save selected movie index and price
+function setMovieData(movieIndex, moviePrice) {
+    localStorage.setItem('selectedMovieIndex', movieIndex);
+    localStorage.setItem('selectedMoviePrice', moviePrice);
+}
+
 // Update total and count
 function updateSelectedCount() {
     const selectedSeats = $('.row .seat.selected');
@@ -24,6 +30,7 @@ function updateSelectedCount() {
     count.text(selectedSeatsCount);
     total.text(selectedSeatsCount * ticketPrice);
 
+    setMovieData(movieSelect.get(0).selectedIndex, movieSelect.val());
 }
 
 // Event Listeners
