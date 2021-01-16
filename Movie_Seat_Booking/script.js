@@ -4,6 +4,8 @@ const count = $('#count');
 const total = $('#total');
 const movieSelect = $('#movie');
 
+populateUI();
+
 let ticketPrice = parseInt(movieSelect.val());
 
 // Save selected movie index and price
