@@ -59,12 +59,70 @@ function checkPasswordMatch(input1, input2) {
     }
 }
 
+// Validate real time
+function validate(e) {
+    const target = e.target;
+    switch (target.id) {
+        case 'username':
+            const userRegex = /^[a-zA-Z0-9]{3,15}$/;
+            if (userRegex.test(target.value.trim())) {
+                target.parentElement.classList.add('success');
+                target.parentElement.classList.remove('error');
+            } else {
+                target.parentElement.classList.add('error');
+                target.parentElement.classList.remove('success');
+                showError(target, 'must be at least 3 characters');
+            }
+            break;
+        case 'email':
+            if (target.id == "email") {
+                const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                if (emailRegex.test(target.value.trim())) {
+                    target.parentElement.classList.add('success');
+                    target.parentElement.classList.remove('error');
+                } else {
+                    target.parentElement.classList.add('error');
+                    target.parentElement.classList.remove('success');
+                    showError(target, 'Email is not valid');
+                }
+            }
+            break;
+        case 'password':
+            const pwdRegex = /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$/;
+            if (pwdRegex.test(target.value.trim())) {
+                target.parentElement.classList.add('success');
+                target.parentElement.classList.remove('error');
+            } else {
+                target.parentElement.classList.add('error');
+                target.parentElement.classList.remove('success');
+                showError(target, 'must be at least 8 characters');
+            }
+            break;
+        case 'password2':
+            const pwd2Regex = /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$/;
+            const pwd = document.querySelector('#password');
+            const pwd2 = document.querySelector('#password2');
+            if (pwd.value === pwd2.value) {
+                target.parentElement.classList.add('success');
+                target.parentElement.classList.remove('error');
+            } else {
+                target.parentElement.classList.add('error');
+                target.parentElement.classList.remove('success');
+                showError(target, 'Passwords do not match');
+            }
+            break;
+
+    }
+}
+
 // Get fieldname
 function getFieldName(input) {
     return input.id.charAt(0).toUpperCase() + input.id.slice(1);
 }
 
 //Eventlistener
+form.addEventListener('input', validate);
+
 form.addEventListener('submit', function(e) {
     e.preventDefault();
 
