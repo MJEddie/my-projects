@@ -69,6 +69,14 @@ function updateValues() {
     $('#money-plus').text(`$${income}`);
     $('#money-minus').text(`$${expense}`);
 }
+
+// Remove transaction by ID
+function removeTransaction(id) {
+    transactions = transactions.filter(transaction => transaction.id !== id);
+
+    init();
+}
+
 // Init app
 function init() {
     $('#list').html('');
