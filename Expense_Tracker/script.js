@@ -8,6 +8,35 @@ let transactions = [
     { id: 4, text: 'Camera', amount: 150 }
 ];
 
+function addTransaction(e) {
+    e.preventDefault();
+
+    if (text.val().trim() === '' || amount.val().trim() === '') {
+        alert('Please add a text and amount');
+    } else {
+        const transaction = {
+            id: generateID(),
+            text: text.val(),
+            amount: parseInt(amount.val())
+
+        };
+
+        transactions.push(transaction);
+
+        addTransactionDOM(transaction);
+
+        updateValues();
+
+        text.val('');
+        amount.val('');
+    }
+}
+
+// Generate randim ID
+function generateID() {
+    return Math.floor(Math.random() * 10000);
+}
+
 // Add transactions on list
 function addTransactionDOM(transaction) {
     const sign = transaction.amount < 0 ? '-' : '+';
@@ -49,3 +78,6 @@ function init() {
 }
 
 init();
+
+// Event Listener
+$('#form').submit(addTransaction);
