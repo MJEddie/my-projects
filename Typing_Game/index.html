@@ -37,11 +37,17 @@
 
         <input type="text" id="text" autocomplete="off" placeholder="Type the word here..." autofocus />
 
-        <p class="time-container">Time left: <span id="time">10s</span></p>
+        <p class="time-container">Time left: <span id="time"></span></p>
 
         <p class="score-container">Score: <span id="score">0</span></p>
 
-        <div id="end-game-container" class="end-game-container"></div>
+        <div id="end-game-container" class="end-game-container">
+            <!-- end game HTML format
+            <h1>Time ran out</h1>
+            <p>Your final score is ${score}</p>
+            <button onclick="location.reload()">Reload</button>
+             -->
+        </div>
     </div>
 
     <script src="script.js"></script>
