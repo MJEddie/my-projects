@@ -14,19 +14,29 @@ function randomWords() {
         })
 }
 
-
+// Countdown time
+function countDownTime() {
+    time--;
+    $('#time').text(`${time}s`);
+}
 
 // Event listeners
-$('input').change(function() {
+$('input').keyup(function() {
     const answer = $(this);
     if (answer.val() === randomWord) {
         randomWords();
         score++;
         $('#score').text(score)
-        time += 5;
-        $('#time').text(time)
+        countDownTime();
         answer.val('');
     }
 })
 
 randomWords();
+const intervalid = setInterval(() => {
+    if (time <= 0) {
+        clearInterval(intervalid);
+    } else {
+        countDownTime();
+    }
+}, 1000)
