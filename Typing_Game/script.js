@@ -2,6 +2,8 @@
 let randomWord;
 let score = 0;
 let time = 20;
+let difficulty = localStorage.getItem('difficulty') !== null ? localStorage.getItem('difficulty') : 'easy';
+$('#difficulty').val(difficulty);
 
 // Generate random word
 function randomWords() {
@@ -23,7 +25,6 @@ function countDownTime() {
 // Event listeners
 $('input').keyup(function() {
     const answer = $(this);
-    const difficulty = $('#difficulty').val();
     if (answer.val() === randomWord) {
         randomWords();
         score++;
@@ -43,6 +44,11 @@ $('input').keyup(function() {
 
 $('#settings-btn').click(function() {
     $('#settings').toggleClass('hide');
+})
+
+$('#settings-form').change(function() {
+    difficulty = $('#difficulty').val();
+    localStorage.setItem('difficulty', difficulty)
 })
 
 const intervalid = setInterval(() => {
