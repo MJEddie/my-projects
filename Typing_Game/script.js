@@ -16,8 +16,8 @@ function randomWords() {
 
 // Countdown time
 function countDownTime() {
-    time--;
     $('#time').text(`${time}s`);
+    time--;
 }
 
 // Event listeners
@@ -31,9 +31,9 @@ $('input').keyup(function() {
         answer.val('');
 
         if (difficulty === 'easy') {
-            time += 15;
-        } else if (difficulty === 'medium') {
             time += 10;
+        } else if (difficulty === 'medium') {
+            time += 8;
         } else {
             time += 5;
         }
@@ -42,8 +42,13 @@ $('input').keyup(function() {
 })
 
 const intervalid = setInterval(() => {
-    if (time == 0) {
+    if (time < 0) {
         clearInterval(intervalid);
+        $('#end-game-container').html(`
+            <h1>Time ran out</h1>
+            <p>Your final score is ${score}</p>
+            <button onclick="location.reload()">Reload</button>
+        `).attr('style', 'display:flex;');
     } else {
         countDownTime();
     }
