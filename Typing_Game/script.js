@@ -1,7 +1,7 @@
 // init
 let randomWord;
 let score = 0;
-let time = 10;
+let time = 20;
 
 // Generate random word
 function randomWords() {
@@ -23,20 +23,30 @@ function countDownTime() {
 // Event listeners
 $('input').keyup(function() {
     const answer = $(this);
+    const difficulty = $('#difficulty').val();
     if (answer.val() === randomWord) {
         randomWords();
         score++;
-        $('#score').text(score)
-        countDownTime();
+        $('#score').text(score);
         answer.val('');
+
+        if (difficulty === 'easy') {
+            time += 15;
+        } else if (difficulty === 'medium') {
+            time += 10;
+        } else {
+            time += 5;
+        }
+        countDownTime();
     }
 })
 
-randomWords();
 const intervalid = setInterval(() => {
-    if (time <= 0) {
+    if (time == 0) {
         clearInterval(intervalid);
     } else {
         countDownTime();
     }
 }, 1000)
+
+randomWords();
