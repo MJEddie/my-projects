@@ -41,6 +41,10 @@ $('input').keyup(function() {
     }
 })
 
+$('#settings-btn').click(function() {
+    $('#settings').toggleClass('hide');
+})
+
 const intervalid = setInterval(() => {
     if (time < 0) {
         clearInterval(intervalid);
