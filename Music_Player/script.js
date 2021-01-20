@@ -86,6 +86,13 @@ nextBtn.click(function() {
     nextSong();
 });
 
+// Time/song update
+$('#audio').bind('timeupdate', function() {
+    const { duration, currentTime } = audio;
+    const progressPercent = (currentTime / duration) * 100;
+    progress.css('width', `${progressPercent}%`);
+});
+
 // song ends
 $('#audio').bind('ended', function() {
     nextSong();
