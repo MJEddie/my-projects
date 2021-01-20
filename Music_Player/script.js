@@ -93,6 +93,17 @@ $('#audio').bind('timeupdate', function() {
     progress.css('width', `${progressPercent}%`);
 });
 
+// Click on progress bar
+$('#progress-container').click(function(e) {
+    const width = $('#progress-container').width();
+    const clickX = $(e.target).offset().left;
+    const pageX = e.pageX;
+
+    const duration = audio.duration;
+
+    audio.currentTime = ((pageX - clickX) / width) * duration;
+});
+
 // song ends
 $('#audio').bind('ended', function() {
     nextSong();
