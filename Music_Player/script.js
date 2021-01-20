@@ -51,3 +51,42 @@ playBtn.click(function() {
         playSong();
     }
 });
+
+// Previous song
+function prevSong() {
+    songIndex--;
+
+    if (songIndex < 0) {
+        songIndex = songs.length - 1;
+    }
+
+    loadSong(songs[songIndex]);
+
+    playSong();
+}
+
+// Next song
+function nextSong() {
+    songIndex++;
+
+    if (songIndex > songs.length - 1) {
+        songIndex = 0;
+    }
+
+    loadSong(songs[songIndex]);
+
+    playSong();
+}
+
+// Change song
+prevBtn.click(function() {
+    prevSong();
+});
+nextBtn.click(function() {
+    nextSong();
+});
+
+// song ends
+$('#audio').bind('ended', function() {
+    nextSong();
+});
