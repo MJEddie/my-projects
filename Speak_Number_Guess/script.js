@@ -46,3 +46,11 @@ function checkNumber(msg) {
 
 // Event linstener
 recognition.addEventListener('result', onSpeak);
+
+recognition.addEventListener('end', () => recognition.start());
+
+$('body').click(function(e) {
+    if (e.target.id == 'play-again') {
+        window.location.reload();
+    }
+});
