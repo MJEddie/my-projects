@@ -1,5 +1,9 @@
 const finalNumber = randomNumber();
 
+let min = 1;
+
+let max = 100;
+
 console.log(`The number is:${finalNumber}`);
 
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -37,9 +41,11 @@ function checkNumber(msg) {
             <button class="play-again" id="play-again">Play Again</button>
         `)
     } else if (number > finalNumber) {
-        $('#msg').append('<div>GO LOWER</div>');
+        max = number;
+        $('#msg').append(`<div>The number is between ${min} - ${max}</div>`);
     } else {
-        $('#msg').append('<div>GO HIGHER</div>');
+        min = number;
+        $('#msg').append(`<div>The number is between ${min} - ${max}</div>`);
     }
 }
 
