@@ -37,9 +37,9 @@ function checkNumber(msg) {
             <button class="play-again" id="play-again">Play Again</button>
         `)
     } else if (number > finalNumber) {
-        $('msg').append('<div>GO LOWER</div>');
+        $('#msg').append('<div>GO LOWER</div>');
     } else {
-        $('msg').append('<div>GO HIGHER</div>');
+        $('#msg').append('<div>GO HIGHER</div>');
     }
 }
 
