@@ -1,6 +1,6 @@
 const finalNumber = randomNumber();
 
-console.log(finalNumber)
+console.log(`The number is:${finalNumber}`);
 
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
@@ -17,7 +17,6 @@ function onSpeak(e) {
     const msg = e.results[0][0].transcript;
 
     checkNumber(msg);
-    console.log(msg)
 }
 
 function checkNumber(msg) {
@@ -31,7 +30,7 @@ function checkNumber(msg) {
         $('#msg').append(`<div>That is not a valid number</div>`);
     } else if (number > 100 || number < 1) {
         $('#msg').append(`<div>Number must be between 1 and 100</div>`)
-    } else if (number == randomNumber) {
+    } else if (number === randomNumber) {
         $('body').html(`
             <h2>Congrats! You have guessed the number! <br><br>
             It was ${number}</h2>
