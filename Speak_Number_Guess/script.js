@@ -30,13 +30,13 @@ function checkNumber(msg) {
         $('#msg').append(`<div>That is not a valid number</div>`);
     } else if (number > 100 || number < 1) {
         $('#msg').append(`<div>Number must be between 1 and 100</div>`)
-    } else if (number === randomNumber) {
+    } else if (number === finalNumber) {
         $('body').html(`
             <h2>Congrats! You have guessed the number! <br><br>
             It was ${number}</h2>
             <button class="play-again" id="play-again">Play Again</button>
         `)
-    } else if (number > randomNumber) {
+    } else if (number > finalNumber) {
         $('msg').append('<div>GO LOWER</div>');
     } else {
         $('msg').append('<div>GO HIGHER</div>');
