@@ -1,7 +1,7 @@
 // init
 let randomWord;
 let score = 0;
-let time = localStorage.getItem('time') !== null ? localStorage.getItem('time') : 30;
+let time = 30;
 let difficulty = localStorage.getItem('difficulty') !== null ? localStorage.getItem('difficulty') : 'easy';
 $('#difficulty').val(difficulty);
 
@@ -49,18 +49,6 @@ $('#settings-btn').click(function() {
 $('#settings-form').change(function() {
     difficulty = $('#difficulty').val();
     localStorage.setItem('difficulty', difficulty)
-    switch (difficulty) {
-        case 'easy':
-            time = 30;
-            break;
-        case 'medium':
-            time = 20;
-            break;
-        case 'hard':
-            time = 15;
-            break;
-    }
-    localStorage.setItem('time', time)
     window.location.reload();
 })
 
