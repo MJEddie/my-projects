@@ -1,12 +1,21 @@
 // init
 let randomWord;
 let score = 0;
-let time = 30;
+let time = 20;
 let difficulty = localStorage.getItem('difficulty') !== null ? localStorage.getItem('difficulty') : 'easy';
 $('#difficulty').val(difficulty);
 
 // Generate random word
-function randomWords() {
+function simpleWords() {
+    fetch('https://random-word-api.herokuapp.com/word?number=1')
+        .then(res => res.json())
+        .then(data => {
+            randomWord = data[0];
+            $('h1').text(randomWord);
+        })
+}
+
+function hardWords() {
     fetch('https://data.taipei/api/v1/dataset/f18de02f-b6c9-47c0-8cda-50efad621c14?scope=resourceAquire')
         .then(res => res.json())
         .then(data => {
@@ -26,17 +35,21 @@ function countDownTime() {
 $('input').keyup(function() {
     const answer = $(this);
     if (answer.val() === randomWord) {
-        randomWords();
+        if (difficulty === 'easy') {
+            simpleWords();
+        } else {
+            hardWords();
+        }
         score++;
         $('#score').text(score);
         answer.val('');
 
         if (difficulty === 'easy') {
-            time += 10;
-        } else if (difficulty === 'medium') {
-            time += 8;
-        } else {
             time += 5;
+        } else if (difficulty === 'medium') {
+            time += 10;
+        } else {
+            time += 8;
         }
         countDownTime();
     }
@@ -65,4 +78,8 @@ const intervalid = setInterval(() => {
     }
 }, 1000)
 
-randomWords();
+if (difficulty === 'easy') {
+    simpleWords();
+} else {
+    hardWords();
+}
