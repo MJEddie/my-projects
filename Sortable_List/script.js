@@ -10,7 +10,7 @@ const famousFood = [
     '刨冰',
     '鳳梨酥'
 ];
-
+const orderItems = [];
 const listItems = [];
 creatList();
 
@@ -20,14 +20,19 @@ function creatList() {
         .sort((a, b) => a.sort - b.sort)
         .map(data => data.value)
         .forEach((food, index) => {
+            const orderItem = $('<li></li>').attr('data-index', index);
+            orderItem.html(`
+            <span class="number ui-state-disabled">${index + 1}</span>
+            `)
             const listItem = $('<li></li>').attr('data-index', index);
             listItem.html(`
-        <span class="number">${index + 1}</span>
-        <div class="draggable" draggable="true">
-          <p class="food-name">${food}</p>
-          <i class="fas fa-grip-lines"></i>
-        </div>
-      `);
+            <div class="draggable ui-state-default">
+                <p class="food-name">${food}</p>
+                <i class="fas fa-grip-lines"></i>
+            </div>
+            `);
+            $('#order-list').append(orderItem);
             $('#draggable-list').append(listItem);
         })
 }
+$('#draggable-list').sortable();
