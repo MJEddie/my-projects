@@ -1,3 +1,4 @@
+const draggable_list = $('#draggable-list')[0];
 const famousFood = [
     '牛肉麵',
     '小籠包',
@@ -12,6 +13,7 @@ const famousFood = [
 ];
 const orderItems = [];
 const listItems = [];
+let dragStartIndex;
 creatList();
 
 function creatList() {
@@ -20,19 +22,84 @@ function creatList() {
         .sort((a, b) => a.sort - b.sort)
         .map(data => data.value)
         .forEach((food, index) => {
-            const orderItem = $('<li></li>').attr('data-index', index);
-            orderItem.html(`
-            <span class="number ui-state-disabled">${index + 1}</span>
-            `)
-            const listItem = $('<li></li>').attr('data-index', index);
-            listItem.html(`
-            <div class="draggable ui-state-default">
-                <p class="food-name">${food}</p>
-                <i class="fas fa-grip-lines"></i>
-            </div>
-            `);
-            $('#order-list').append(orderItem);
-            $('#draggable-list').append(listItem);
-        })
+            const listItem = document.createElement('li');
+
+            listItem.setAttribute('data-index', index);
+
+            listItem.innerHTML = `
+                <span class="number">${index + 1}</span>
+                <div class="draggable" draggable="true">
+                    <p class="food-name">${food}</p>
+                    <i class="fas fa-grip-lines"></i>
+                </div>
+                `;
+
+            listItems.push(listItem);
+
+            draggable_list.appendChild(listItem);
+        });
+
+    addEventListeners();
 }
-$('#draggable-list').sortable();
+
+function checkOrder() {
+    listItems.forEach((listItem, index) => {
+        const foodName = listItem.querySelector('.draggable').innerText.trim();
+
+        if (foodName !== famousFood[index]) {
+            listItem.classList.add('wrong');
+        } else {
+            listItem.classList.remove('wrong');
+            listItem.classList.add('right');
+        }
+    });
+}
+
+function dragStart() {
+    dragStartIndex = +this.closest('li').getAttribute('data-index');
+}
+
+function dragEnter() {
+    this.classList.add('over');
+}
+
+function dragLeave() {
+    this.classList.remove('over');
+}
+
+function dragOver(e) {
+    e.preventDefault();
+}
+
+function dragDrop() {
+    const dragEndIndex = +this.getAttribute('data-index');
+    swapItems(dragStartIndex, dragEndIndex);
+
+    this.classList.remove('over');
+}
+
+function swapItems(fromIndex, toIndex) {
+    const itemOne = listItems[fromIndex].querySelector('.draggable');
+    const itemTwo = listItems[toIndex].querySelector('.draggable');
+
+    listItems[fromIndex].appendChild(itemTwo);
+    listItems[toIndex].appendChild(itemOne);
+}
+
+function addEventListeners() {
+    const draggables = document.querySelectorAll('.draggable');
+    const dragListItems = document.querySelectorAll('.draggable-list li');
+
+    draggables.forEach(draggable => {
+        draggable.addEventListener('dragstart', dragStart);
+    });
+
+    dragListItems.forEach(item => {
+        item.addEventListener('dragover', dragOver);
+        item.addEventListener('drop', dragDrop);
+        item.addEventListener('dragenter', dragEnter);
+        item.addEventListener('dragleave', dragLeave);
+    });
+}
+
+$('#check').click(checkOrder);
