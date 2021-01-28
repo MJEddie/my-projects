@@ -52,3 +52,7 @@
     width: 0px;
     font-weight: bold;
 }
+
+.list-group-item {
+    border-bottom: none;
+}
