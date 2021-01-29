@@ -42,9 +42,6 @@ function getRepoData() {
         success: function(res) {
             data = res;
             showRepos(data);
-        },
-        error: function(XHR, textStatus, errorThrown) {
-
         }
     });
 }
@@ -111,17 +108,7 @@ function showAlert(message, className) {
     const alertMessage = $('<div></div>').attr('class', className + ' text-center');
     alertMessage.text(`User "${userName}" is ${message}`);
     alertMessage.insertBefore($('.search.card.card-body.border-0'));
-    // const div = document.createElement('div');
-    // // Add classes
-    // div.className = className;
-    // // Add text
-    // div.appendChild(document.createTextNode(`User ${userName} is ${message}`));
-    // // Get parent
-    // const container = document.querySelector('.searchContainer');
-    // // Get search box
-    // const search = document.querySelector('.search');
-    // // Insert alert
-    // container.insertBefore(div, search);
+    $('#profile').html('');
 }
 
 // Event linstener
