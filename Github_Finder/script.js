@@ -57,12 +57,13 @@ function showProfile(user) {
                     <a href="${user.html_url}" target="_blank" class="btn btn-primary btn-block mb-4">View Profile</a>
                 </div>
                 <div class="col-md-9">
-                    <span class="badge badge-primary">Public Repos: ${user.public_repos}</span>
-                    <span class="badge badge-secondary">Public Gists: ${user.public_gists}</span>
-                    <span class="badge badge-success">Followers: ${user.followers}</span>
-                    <span class="badge badge-info">Following: ${user.following}</span>
-                    <br><br>
-                    <ul class="list-group list-group-flush mt-2">
+                    <div class="container mt-2 px-0">
+                        <span class="badge badge-primary ml-5">Public Repos: ${user.public_repos}</span>
+                        <span class="badge badge-secondary">Public Gists: ${user.public_gists}</span>
+                        <span class="badge badge-success">Followers: ${user.followers}</span>
+                        <span class="badge badge-info">Following: ${user.following}</span>
+                    </div>
+                    <ul class="list-group list-group-flush mt-2 ml-5">
                         <li class="list-group-item">Company: ${user.company}</li>
                         <li class="list-group-item">Website/Blog: ${user.blog}</li>
                         <li class="list-group-item">Location: ${user.location}</li>
