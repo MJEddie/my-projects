@@ -12,6 +12,10 @@
     padding: 10px;
 }
 
+.buscar-caja:hover {
+    background: aliceblue;
+}
+
 .buscar-caja:hover>.buscar-txt {
     width: 240px;
     padding: 0 6px;
