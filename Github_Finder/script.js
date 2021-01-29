@@ -22,19 +22,17 @@ function getUserData() {
             obj.created_at = res.created_at.substr(0, 10) !== null ? res.created_at.substr(0, 10) : '';
             obj.updated_at = res.updated_at.substr(0, 10) !== null ? res.updated_at.substr(0, 10) : '';
             showProfile(obj);
-            console.log(res)
         }
     });
 }
 
 function getRepoData() {
     $.ajax({
-        url: `https://api.github.com/users/${username}/repos?per_page=5&sort=created: asc`,
+        url: `https://api.github.com/users/${userName}/repos?per_page=5&sort=created: asc`,
         method: 'GET',
         dataType: 'json',
         success: function(res) {
-            data = res;
-            console.log(data)
+            console.log(res)
                 // showRepos(data);
         }
 
@@ -74,33 +72,8 @@ function showProfile(user) {
     `);
 }
 
-//Show repo
-function showRepos(repos) {
-    let output = '';
-    repos.forEach(function(repo) {
-        $('#repos').html(`
-            <div class="card card-body mb-2  border-0">
-                <div class="row shadow-sm p-3 bg-white rounded">
-                    <div class="col-md-6">
-                        <a href="${repo.html_url}" target="_blank">
-                            <h3>${repo.name}</h3>
-                        </a>
-                        <p>${repo.description}</p>
-                    </div>
-                    <div class="col-md-6">
-                        <span class="badge badge-warning m-1">Stars ${repo.stargazers_count}</span>
-                        <span class="badge badge-success m-1">Watchers ${repo.watchers_count}</span>
-                        <span class="badge badge-info m-1">Forks ${repo.forks_count}</span>
-                    </div>
-                </div>
-            </div>
-        `);
-    });
-    $('')
-}
-
 searchUser.keyup(function() {
     userName = searchUser.val();
-    console.log(userName)
     getUserData(userName);
+    getRepoData(userName);
 })
