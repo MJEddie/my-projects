@@ -1,4 +1,3 @@
-const draggable_list = $('#draggable-list')[0];
 const famousFood = [
     '牛肉麵',
     '小籠包',
@@ -11,9 +10,7 @@ const famousFood = [
     '刨冰',
     '鳳梨酥'
 ];
-const orderItems = [];
-const listItems = [];
-let dragStartIndex;
+
 creatList();
 
 function creatList() {
@@ -22,31 +19,31 @@ function creatList() {
         .sort((a, b) => a.sort - b.sort)
         .map(data => data.value)
         .forEach((food, index) => {
-            const listItem = document.createElement('li');
-
-            listItem.setAttribute('data-index', index);
-
-            listItem.innerHTML = `
-                <span class="number">${index + 1}</span>
-                <div class="draggable" draggable="true">
-                    <p class="food-name">${food}</p>
-                    <i class="fas fa-grip-lines"></i>
-                </div>
-                `;
-
-            listItems.push(listItem);
-
-            draggable_list.appendChild(listItem);
-        });
-
-    addEventListeners();
+            // 排名的 list
+            const orderItem = $('<li></li>').attr('data-index', index);
+            orderItem.html(`
+            <span class="number">${index + 1}</span>
+            `)
+            const foodItem = $('<li></li>').attr('data-index', index);
+            foodItem.html(`
+            <div class="draggable">
+                <p class="food-name">${food}</p>
+                <i class="fas fa-grip-lines"></i>
+            </div>
+            `);
+            $('#order-list').append(orderItem);
+            $('#draggable-list').append(foodItem);
+        })
 }
 
+// Check order
 function checkOrder() {
-    listItems.forEach((listItem, index) => {
+    // 抓取每一個 list 檢查名稱是否相符
+    const draggableList = $('#draggable-list li')
+    draggableList.each((index, listItem) => {
         const foodName = listItem.querySelector('.draggable').innerText.trim();
-
         if (foodName !== famousFood[index]) {
+            listItem.classList.remove('right');
             listItem.classList.add('wrong');
         } else {
             listItem.classList.remove('wrong');
@@ -55,51 +52,9 @@ function checkOrder() {
     });
 }
 
-function dragStart() {
-    dragStartIndex = +this.closest('li').getAttribute('data-index');
-}
+// jQuery sortable UI
+$('#draggable-list').sortable();
+$('#draggable-list').disableSelection();
 
-function dragEnter() {
-    this.classList.add('over');
-}
-
-function dragLeave() {
-    this.classList.remove('over');
-}
-
-function dragOver(e) {
-    e.preventDefault();
-}
-
-function dragDrop() {
-    const dragEndIndex = +this.getAttribute('data-index');
-    swapItems(dragStartIndex, dragEndIndex);
-
-    this.classList.remove('over');
-}
-
-function swapItems(fromIndex, toIndex) {
-    const itemOne = listItems[fromIndex].querySelector('.draggable');
-    const itemTwo = listItems[toIndex].querySelector('.draggable');
-
-    listItems[fromIndex].appendChild(itemTwo);
-    listItems[toIndex].appendChild(itemOne);
-}
-
-function addEventListeners() {
-    const draggables = document.querySelectorAll('.draggable');
-    const dragListItems = document.querySelectorAll('.draggable-list li');
-
-    draggables.forEach(draggable => {
-        draggable.addEventListener('dragstart', dragStart);
-    });
-
-    dragListItems.forEach(item => {
-        item.addEventListener('dragover', dragOver);
-        item.addEventListener('drop', dragDrop);
-        item.addEventListener('dragenter', dragEnter);
-        item.addEventListener('dragleave', dragLeave);
-    });
-}
-
+// Event listener
 $('#check').click(checkOrder);
