@@ -26,3 +26,44 @@ function getUserData() {
         }
     });
 }
+
+// Show profile
+function showProfile(user) {
+    $('#profile').html(`
+        <div class="card card-body border-0">
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="img-fluid rounded-circle mb-2" src="${user.avatar_url}">
+                    <h5 class="mt-2 text-center">${user.name}</h5>
+                    <a href="${user.html_url}" target="_blank" class="btn btn-primary btn-block mb-4">View Profile</a>
+                </div>
+                <div class="col-md-9">
+                    <div class="container mt-2 px-0">
+                        <span class="badge badge-primary ml-5">Public Repos: ${user.public_repos}</span>
+                        <span class="badge badge-secondary">Public Gists: ${user.public_gists}</span>
+                        <span class="badge badge-success">Followers: ${user.followers}</span>
+                        <span class="badge badge-info">Following: ${user.following}</span>
+                    </div>
+                    <ul class="list-group list-group-flush mt-2 ml-5">
+                        <li class="list-group-item">Company: ${user.company}</li>
+                        <li class="list-group-item">Website/Blog: ${user.blog}</li>
+                        <li class="list-group-item">Location: ${user.location}</li>
+                        <li class="list-group-item">Member Since: ${user.created_at}</li>
+                        <li class="list-group-item">Currently Updated: ${user.updated_at}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <h3 class="page-heading mb-3">Latest Repos</h3>
+            <div id="repos"></div>
+        </div>
+    `);
+}
+
+// Event linstener
+searchBtn.click(function() {
+    userName = searchUser.val();
+    getUserData(userName);
+    searchUser.val('');
+})
