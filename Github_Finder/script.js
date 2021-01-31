@@ -73,9 +73,33 @@ function showProfile(user) {
     `);
 }
 
+//Show repo
+function showRepos(repos) {
+    repos.forEach(function(repo) {
+        const repoData = $('<div class="card card-body mb-2  border-0"></div>').appendTo('#repos');
+        let repoDes = repo.description !== null ? repo.description : '';
+        repoData.html(`
+                <div class="row shadow-sm p-3 bg-white rounded">
+                    <div class="col-md-6">
+                        <a href="${repo.html_url}" target="_blank">
+                            <h3>${repo.name}</h3>
+                        </a>
+                        <p>${repoDes}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <span class="badge badge-warning m-1">Stars ${repo.stargazers_count}</span>
+                        <span class="badge badge-success m-1">Watchers ${repo.watchers_count}</span>
+                        <span class="badge badge-info m-1">Forks ${repo.forks_count}</span>
+                    </div>
+                </div>
+        `);
+    });
+}
+
 // Event linstener
 searchBtn.click(function() {
     userName = searchUser.val();
     getUserData(userName);
+    getRepoData(userName);
     searchUser.val('');
 })
