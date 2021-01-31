@@ -108,6 +108,11 @@ function showAlert(message, className) {
     alertMessage.text(`User "${userName}" is ${message}`);
     alertMessage.insertBefore($('.search.card.card-body.border-0'));
     $('#profile').html('');
+
+    // clear display after 2 sec
+    setTimeout(() => {
+        alertMessage.remove();
+    }, 2000);
 }
 
 // Event linstener
