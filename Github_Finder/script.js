@@ -27,6 +27,18 @@ function getUserData() {
     });
 }
 
+function getRepoData() {
+    $.ajax({
+        url: `https://api.github.com/users/${userName}/repos?per_page=5&sort=created: asc`,
+        method: 'GET',
+        dataType: 'json',
+        success: function(res) {
+            data = res;
+            showRepos(data);
+        }
+    });
+}
+
 // Show profile
 function showProfile(user) {
     $('#profile').html(`
