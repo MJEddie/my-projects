@@ -25,7 +25,6 @@ function getUserData() {
             showProfile(obj);
         },
         error: function(res) {
-            console.log(res)
             data = res.responseJSON.message;
             if (data === 'Not Found') {
                 showAlert(data, 'alert alert-danger');
@@ -85,7 +84,6 @@ function showRepos(repos) {
     repos.forEach(function(repo) {
         const repoData = $('<div class="card card-body mb-2  border-0"></div>').appendTo('#repos');
         let repoDes = repo.description !== null ? repo.description : '';
-        console.log(repo.description)
         repoData.html(`
                 <div class="row shadow-sm p-3 bg-white rounded">
                     <div class="col-md-6">
