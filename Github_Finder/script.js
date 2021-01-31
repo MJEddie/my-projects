@@ -23,6 +23,12 @@ function getUserData() {
             obj.created_at = res.created_at.substr(0, 10) !== null ? res.created_at.substr(0, 10) : '';
             obj.updated_at = res.updated_at.substr(0, 10) !== null ? res.updated_at.substr(0, 10) : '';
             showProfile(obj);
+        },
+        error: function(res) {
+            data = res.responseJSON.message;
+            if (data === 'Not Found') {
+                showAlert(data, 'alert alert-danger');
+            }
         }
     });
 }
@@ -94,6 +100,14 @@ function showRepos(repos) {
                 </div>
         `);
     });
+}
+
+//Show alert
+function showAlert(message, className) {
+    const alertMessage = $('<div></div>').attr('class', className + ' text-center');
+    alertMessage.text(`User "${userName}" is ${message}`);
+    alertMessage.insertBefore($('.search.card.card-body.border-0'));
+    $('#profile').html('');
 }
 
 // Event linstener
