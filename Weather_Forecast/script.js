@@ -2,7 +2,10 @@ let city;
 let cityIndex = 9;
 let data;
 
-let timeNow = new Date();
+function getDate() {
+    let timeNow = new Date();
+    return timeNow;
+}
 
 function getWeather() {
     $.ajax({
@@ -37,11 +40,13 @@ function showWeather(data, cityIndex) {
     const description = weather[6].time[0].elementValue[0].value;
     const minT = `${weather[8].time[0].elementValue[0].value} °C`;
     const maxT = `${weather[12].time[0].elementValue[0].value} °C`;
-    let date = timeNow.toGMTString();
+    const rain = weather[0].time[0].elementValue[0].value !== " " ? weather[0].time[0].elementValue[0].value : '0';
+    let descriptionImg = checkWeather(rain);
+    let date = getDate().toGMTString();
     $('.today-description').html(`
     <h1>${cityName}</h1>
     <h2>${date.substr(0,16)}</h2>
-    <img src="images/svg/sun.svg" alt="weather-img">
+    ${descriptionImg}
     <div class="today-description">${description} <br>${minT} / ${maxT}</div>
     `)
 }
@@ -55,17 +60,29 @@ function showWeek(data, cityIndex) {
         const description = weather[6].time[timeIndex].elementValue[0].value;
         const minT = `${weather[8].time[timeIndex].elementValue[0].value} °C`;
         const maxT = `${weather[12].time[timeIndex].elementValue[0].value} °C`;
-        const rain = weather[0].time[timeIndex].elementValue[0].value !== " " ? weather[0].time[timeIndex].elementValue[0].value : 0;
+        const rain = weather[0].time[timeIndex].elementValue[0].value !== " " ? weather[0].time[timeIndex].elementValue[0].value : '0';
+        let descriptionImg = checkWeather(rain);
         day.html(`
         <h3>週二</h3>
         <div class="description">
-            <img src="images/svg/sun.svg" alt="weather-img">
+            ${descriptionImg}
         </div>
         <div class="temp">${minT} / ${maxT}</div>
         <div class="week-description">${description}</div>
         <div class="rain">降雨機率 : ${rain} %</div> 
         `)
         $('#week').append(day);
+    }
+}
+
+function checkWeather(rain) {
+    let ifRain = parseInt(rain.trim());
+    if (ifRain <= 100 && ifRain >= 60) {
+        return '<img src="images/svg/rain.svg" alt="weather-img">';
+    } else if (ifRain < 60 && ifRain > 30) {
+        return '<img src="images/svg/cloudy.svg" alt="weather-img">';
+    } else {
+        return '<img src="images/svg/sun.svg" alt="weather-img">';
     }
 }
 
