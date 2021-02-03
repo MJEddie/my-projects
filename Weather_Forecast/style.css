@@ -62,15 +62,16 @@
         font-size: 30px;
     }
     
-    .selsetor {
+    .selector {
         width: 30%;
         height: 30px;
-        background-color: lightskyblue;
     }
     
-    .selsetor select {
+    .selector select {
         width: 100%;
         height: 100%;
+        background-color: rgba(173, 216, 230, 0.3);
+        padding-left: 40%;
         border: none;
         outline: none;
     }
