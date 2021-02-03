@@ -2,11 +2,11 @@ let city;
 let cityIndex = 9;
 let data;
 
-const timeNow = new Date();
+let timeNow = new Date();
 
 function getWeather() {
     $.ajax({
-        url: 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-091?Authorization=CWB-373C6328-6BF2-41B3-BB3B-147802B82875&format=JSON&locationName=&elementName=&sort=time&timeFrom=2021-02-04T06%3A00%3A00&timeTo=2021-02-04T18%3A00%3A00" -H  "accept: application/json',
+        url: 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-091?Authorization=CWB-373C6328-6BF2-41B3-BB3B-147802B82875&format=JSON&locationName=&elementName=&sort=time',
         method: 'GET',
         dataType: 'json',
         success: function(res) {
@@ -15,6 +15,7 @@ function getWeather() {
             console.log(data)
             selectCity(city);
             showWeather(data, cityIndex)
+            showWeek(data, cityIndex)
         }
     });
 }
@@ -36,8 +37,8 @@ function showWeather(data, cityIndex) {
     const description = weather[6].time[0].elementValue[0].value;
     const minT = `${weather[8].time[0].elementValue[0].value} °C`;
     const maxT = `${weather[12].time[0].elementValue[0].value} °C`;
-    const date = timeNow.toGMTString();
-    $('.description').html(`
+    let date = timeNow.toGMTString();
+    $('.today-description').html(`
     <h1>${cityName}</h1>
     <h2>${date.substr(0,16)}</h2>
     <img src="images/svg/sun.svg" alt="weather-img">
@@ -45,9 +46,33 @@ function showWeather(data, cityIndex) {
     `)
 }
 
+function showWeek(data, cityIndex) {
+    $('#week').html('');
+    const weather = data.location[cityIndex].weatherElement;
+    for (i = 1; i < 7; i++) {
+        let timeIndex = 2 * i;
+        const day = $('<div></div>').attr('class', `day-${i}`);
+        const description = weather[6].time[timeIndex].elementValue[0].value;
+        const minT = `${weather[8].time[timeIndex].elementValue[0].value} °C`;
+        const maxT = `${weather[12].time[timeIndex].elementValue[0].value} °C`;
+        const rain = weather[0].time[timeIndex].elementValue[0].value !== " " ? weather[0].time[timeIndex].elementValue[0].value : 0;
+        day.html(`
+        <h3>週二</h3>
+        <div class="description">
+            <img src="images/svg/sun.svg" alt="weather-img">
+        </div>
+        <div class="temp">${minT} / ${maxT}</div>
+        <div class="week-description">${description}</div>
+        <div class="rain">降雨機率 : ${rain} %</div> 
+        `)
+        $('#week').append(day);
+    }
+}
+
 getWeather();
 
 $('#select').change(function() {
     cityIndex = $('#select :selected').val();
     showWeather(data, cityIndex);
+    showWeek(data, cityIndex);
 });
