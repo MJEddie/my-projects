@@ -9,3 +9,5 @@
 | 05  |  Expense Tracker  | [Live Demo](https://mjeddie.github.io/JavaScript-Projects/Expense_Tracker/index.html)  |
 | 06  |  Music Player  | [Live Demo](https://mjeddie.github.io/JavaScript-Projects/Music_Player/index.html)  |
 | 07  |  Infinite Scroll Blog  | [Live Demo](https://mjeddie.github.io/JavaScript-Projects/Infinite_Scroll_Blog/index.html)  |
+| 08  |  Typing Game  | [Live Demo](https://mjeddie.github.io/JavaScript-Projects/Typing_Game/index.html)  |
+| 09  |  Speak Number Guess  | [Live Demo](https://mjeddie.github.io/JavaScript-Projects/Speak_Number_Guess/index.html)  |
