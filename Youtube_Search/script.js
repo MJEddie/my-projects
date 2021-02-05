@@ -1,7 +1,3 @@
-$(document).ready(function() {
-    $(".fancybox").fancybox();
-});
-
 let q = $('#search-field').val();
 
 $('#search-btn').click(function(e) {
@@ -18,7 +14,7 @@ function getVideos() {
         data: 'data',
         dataType: 'json',
         success: function(res) {
-            // console.log(res);
+
             const nextPageToken = res.nextPageToken;
             const prevPageToken = res.prevPageToken;
 
@@ -72,7 +68,7 @@ function prevPage() {
         data: 'data',
         dataType: 'json',
         success: function(res) {
-            // console.log(res);
+
             const nextPageToken = res.nextPageToken;
             const prevPageToken = res.prevPageToken;
 
@@ -99,7 +95,7 @@ function nextPage() {
         data: 'data',
         dataType: 'json',
         success: function(res) {
-            // console.log(res);
+
             const nextPageToken = res.nextPageToken;
             const prevPageToken = res.prevPageToken;
 
