@@ -38,6 +38,10 @@ function showViedos(item) {
     const channelTitle = item.snippet.channelTitle;
     const videoDate = item.snippet.publishedAt;
 
+    // 清空內容
+    $('#results').html('');
+    $('#buttons').html('');
+
     // 插入 DOM 中
     const result = $('<li></li>');
     result.html(`
