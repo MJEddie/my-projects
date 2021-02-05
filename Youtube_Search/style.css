@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoue", sans-serif;
+    line-height: 1.6em;
+    background-color: #f4f4f4;
+    font-size: 14px;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+#container {
+    width: 740px;
+    background: #fff;
+    margin: auto;
+}
+
+.clearfix {
+    clear: both;
+}
+
+header {
+    font-family: 'Lobster', cursive;
+    position: relative;
+    padding: 30px 20px;
+    background: #f4f4f4;
+}
+
+header h1 {
+    color: #000;
+    font-size: 50px;
+    margin: 10px 0;
+}
+
+header span {
+    position: absolute;
+    top: 0;
+    color: #fff;
+    background-color: #f64f4f;
+    font-size: 18px;
+    font-weight: 100;
+    margin: 10px 10px;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+section {
+    padding: 30px 20px 20px 20px;
+    background: #f4f4f4;
+}
+
+footer {
+    font-family: 'Lobster', cursive;
+    padding: 20px;
+    background: #f4f4f4;
+    text-align: center;
+}
+
+#search-form {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.fieldcontainer {
+    display: flex;
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.search-field {
+    width: 80%;
+    height: 63px;
+    padding: 11px 7px;
+    padding-right: 43px;
+    color: #343434;
+    border: 1px solid transparent;
+    font-size: 1.6em;
+    outline: none;
+}
+
+#search-btn {
+    width: 20%;
+    margin: 0;
+    padding: 0 30px;
+    font-family: 'Lobster', cursive;
+    font-size: 25px;
+    font-weight: 400;
+    background: #E6E6E6;
+    color: #343434;
+    border: 0;
+    cursor: pointer;
+    outline: none;
+    zoom: 1;
+}
+
+#search-btn:hover {
+    background: #f64f4f;
+    color: #fff;
+}
+
+#results li {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    background: #fff;
+    list-style: none;
+    overflow: auto;
+}
+
+.thumbnail {
+    display: flex;
+    width: 20%;
+}
+
+.thumbnail img {
+    width: 100%;
+    padding: 3px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+}
+
+.cTitle {
+    color: #f64f4f;
+}
