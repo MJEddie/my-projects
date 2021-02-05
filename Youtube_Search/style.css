@@ -135,3 +135,27 @@ footer {
 .cTitle {
     color: #f64f4f;
 }
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
+
+.prev-button {
+    border-color: transparent #f64f4f transparent transparent;
+    border-style: solid solid solid solid;
+    border-width: 10px 30px 10px 0;
+    height: 0px;
+    width: 0px;
+    cursor: pointer;
+}
+
+.next-button {
+    border-color: transparent transparent transparent #f64f4f;
+    border-style: solid solid solid solid;
+    border-width: 10px 0px 10px 30px;
+    height: 0px;
+    width: 0px;
+    cursor: pointer;
+}
