@@ -53,6 +53,32 @@ function showViedos(item) {
     $('#results').append(result);
 }
 
+function nextPage() {
+    const token = $('#next-button').data('token');
+    // const q = $('#next-button').data('query');
+    // 清空內容
+    $('#results').html('');
+    $('#buttons').html('');
+
+    $.ajax({
+        url: `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&order=relevance&q=${q}&pageToken=${token}&key=AIzaSyBs4RcftfDFAtDE9ndaHFaZAtCYKVMCIfI`,
+        method: 'GET',
+        data: 'data',
+        dataType: 'json',
+        success: function(res) {
+            console.log(res);
+            const nextPageToken = res.nextPageToken;
+            const prevPageToken = res.prevPageToken;
+
+            $.each(res.items, function(i, item) {
+                showViedos(item);
+            });
+
+            generateButtons(prevPageToken, nextPageToken);
+        }
+    });
+}
+
 function generateButtons(prevPageToken, nextPageToken) {
     if (!prevPageToken) {
         const button = $(`
@@ -64,7 +90,7 @@ function generateButtons(prevPageToken, nextPageToken) {
     } else {
         const button = $(`
         <div class="button-container">
-            <button id="prev-button" class="prev-button" data-token="${prevtPageToken}" data-query="${q}" onclick="prevPage()"></button>
+            <button id="prev-button" class="prev-button" data-token="${prevPageToken}" data-query="${q}" onclick="prevPage()"></button>
             <button id="next-button" class="next-button" data-token="${nextPageToken}" data-query="${q}" onclick="nextPage()"></button>
         </div>
         `);
