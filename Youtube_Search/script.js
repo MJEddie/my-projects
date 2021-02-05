@@ -1,3 +1,7 @@
+$(document).ready(function() {
+    $(".fancybox").fancybox();
+});
+
 let q = $('#search-field').val();
 
 $('#search-btn').click(function(e) {
@@ -27,6 +31,7 @@ function getVideos() {
     });
 }
 
+// 顯示搜尋結果
 function showViedos(item) {
 
     // 抓取資料
@@ -44,7 +49,7 @@ function showViedos(item) {
             <img src="${thumbnail}" alt="">
         </div>
         <div class="info">
-            <h3><a href="http://www.youtube.com/embed/${videoID}">${title}</a></h3>
+            <h3><a data-fancybox href="http://www.youtube.com/embed/${videoID}">${title}</a></h3>
             <small>By <span class="cTitle">${channelTitle}</span> on ${videoDate.substr(0,10)}</small>
             <p>${description}</p>
         </div>
@@ -53,6 +58,7 @@ function showViedos(item) {
     $('#results').append(result);
 }
 
+// 搜尋結果上一頁
 function prevPage() {
     const token = $('#prev-button').data('token');
 
@@ -79,6 +85,7 @@ function prevPage() {
     });
 }
 
+// 搜尋結果下一頁
 function nextPage() {
     const token = $('#next-button').data('token');
 

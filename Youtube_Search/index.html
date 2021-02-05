@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- fancyBox -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Youtube Search Engine</title>
 </head>
 
@@ -37,7 +40,13 @@
                     </div>
                 </li> -->
             </ul>
-            <div id="buttons"></div>
+            <div id="buttons">
+                <!-- Sample content
+                <div class="button-container">
+                    <button id="prev-button" class="next-button" data-token="prevPageToken" data-query="q" onclick="prevPage()"></button>
+                    <button id="prev-button" class="prev-button" data-token="nextPageToken" data-query="q" onclick="nextPage()"></button>
+                </div> -->
+            </div>
         </section>
         <footer>
             <p>Copyright &copy; <span id="year"></span>, All Rights Reserved </p>
@@ -48,6 +57,16 @@
     </script>
 
     <script src="script.js"></script>
+
+    <script>
+        $('[data-fancybox]').fancybox({
+            toolbar: false,
+            smallBtn: true,
+            iframe: {
+                preload: false
+            }
+        })
+    </script>
 
 </body>
 
