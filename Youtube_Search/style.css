@@ -143,6 +143,7 @@ footer {
 }
 
 .prev-button {
+    margin: 0 5px;
     border-color: transparent #f64f4f transparent transparent;
     border-style: solid solid solid solid;
     border-width: 10px 30px 10px 0;
@@ -152,6 +153,7 @@ footer {
 }
 
 .next-button {
+    margin: 0 5px;
     border-color: transparent transparent transparent #f64f4f;
     border-style: solid solid solid solid;
     border-width: 10px 0px 10px 30px;
