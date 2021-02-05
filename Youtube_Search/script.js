@@ -1,13 +1,18 @@
-let q = $('#search-field').val();
+let q;
 
 $('#search-btn').click(function(e) {
     e.preventDefault();
 
+    // 清空內容
+    $('#results').html('');
+    $('#buttons').html('');
+
+    q = $('#search-field').val();
     getVideos(q);
 });
 
 // Search youtube data
-function getVideos() {
+function getVideos(q) {
     $.ajax({
         url: `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&order=relevance&q=${q}&key=AIzaSyBs4RcftfDFAtDE9ndaHFaZAtCYKVMCIfI`,
         method: 'GET',
@@ -37,10 +42,6 @@ function showViedos(item) {
     const thumbnail = item.snippet.thumbnails.high.url;
     const channelTitle = item.snippet.channelTitle;
     const videoDate = item.snippet.publishedAt;
-
-    // 清空內容
-    $('#results').html('');
-    $('#buttons').html('');
 
     // 插入 DOM 中
     const result = $('<li></li>');
