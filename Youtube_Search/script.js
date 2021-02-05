@@ -15,16 +15,21 @@ function getVideos() {
         dataType: 'json',
         success: function(res) {
             console.log(res);
+            const nextPageToken = res.nextPageToken;
+            const prevPageToken = res.prevPageToken;
 
             $.each(res.items, function(i, item) {
                 showViedos(item);
-            })
+            });
+
+            generateButtons(prevPageToken, nextPageToken);
         }
     });
 }
 
 function showViedos(item) {
 
+    // 抓取資料
     const videoID = item.id.videoId;
     const title = item.snippet.title;
     const description = item.snippet.description;
@@ -32,6 +37,7 @@ function showViedos(item) {
     const channelTitle = item.snippet.channelTitle;
     const videoDate = item.snippet.publishedAt;
 
+    // 插入 DOM 中
     const result = $('<li></li>');
     result.html(`
         <div class="thumbnail">
@@ -45,5 +51,23 @@ function showViedos(item) {
         `);
 
     $('#results').append(result);
+}
 
+function generateButtons(prevPageToken, nextPageToken) {
+    if (!prevPageToken) {
+        const button = $(`
+        <div class="button-container">
+            <button id="next-button" class="next-button" data-token="${nextPageToken}" data-query="${q}" onclick="nextPage()"></button>
+        </div>
+        `);
+        $('#buttons').append(button);
+    } else {
+        const button = $(`
+        <div class="button-container">
+            <button id="prev-button" class="prev-button" data-token="${prevtPageToken}" data-query="${q}" onclick="prevPage()"></button>
+            <button id="next-button" class="next-button" data-token="${nextPageToken}" data-query="${q}" onclick="nextPage()"></button>
+        </div>
+        `);
+        $('#buttons').append(button);
+    }
 }
