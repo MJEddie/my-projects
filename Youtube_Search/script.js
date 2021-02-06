@@ -50,7 +50,7 @@ function showViedos(item) {
             <img src="${thumbnail}" alt="">
         </div>
         <div class="info">
-            <h3><a data-fancybox href="http://www.youtube.com/embed/${videoID}">${title}</a></h3>
+            <h3><a data-fancybox data-type="iframe" href="http://www.youtube.com/embed/${videoID}">${title}</a></h3>
             <small>By <span class="cTitle">${channelTitle}</span> on ${videoDate.substr(0,10)}</small>
             <p>${description}</p>
         </div>
@@ -117,15 +117,15 @@ function generateButtons(prevPageToken, nextPageToken) {
     if (!prevPageToken) {
         const button = $(`
         <div class="button-container">
-            <button id="next-button" class="next-button" data-token="${nextPageToken}" data-query="${q}" onclick="nextPage()"></button>
+            <button id="next-button" class="next-button" data-token="${nextPageToken}" onclick="nextPage()"></button>
         </div>
         `);
         $('#buttons').append(button);
     } else {
         const button = $(`
         <div class="button-container">
-            <button id="prev-button" class="prev-button" data-token="${prevPageToken}" data-query="${q}" onclick="prevPage()"></button>
-            <button id="next-button" class="next-button" data-token="${nextPageToken}" data-query="${q}" onclick="nextPage()"></button>
+            <button id="prev-button" class="prev-button" data-token="${prevPageToken}" onclick="prevPage()"></button>
+            <button id="next-button" class="next-button" data-token="${nextPageToken}" onclick="nextPage()"></button>
         </div>
         `);
         $('#buttons').append(button);
