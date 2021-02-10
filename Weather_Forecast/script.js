@@ -2,11 +2,6 @@ let city;
 let cityIndex = 9;
 let data;
 
-function getDate() {
-    let timeNow = new Date();
-    return timeNow;
-}
-
 // Get data from API
 function getWeather() {
     $.ajax({
@@ -44,7 +39,7 @@ function showWeather(data, cityIndex) {
     const minT = `${weather[8].time[0].elementValue[0].value} °C`;
     const maxT = `${weather[12].time[0].elementValue[0].value} °C`;
     let descriptionImg = checkWeather(description);
-    let date = getDate().toGMTString();
+    let date = new Date().toString();
 
     $('.today-description').html(`
     <h1>${cityName}</h1>
