@@ -1,0 +1,76 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    color: #222326;
+    background-attachment: fixed;
+    background-image: url(https://lolstatic-a.akamaihd.net/lolkit/1.1.6/resources/images/bg-default.jpg);
+    background-repeat: no-repeat;
+}
+
+.container {
+    width: 1000px;
+    margin: 0 auto;
+    padding-top: 30px;
+    display: block;
+}
+
+.channels {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.channel {
+    width: 33%;
+    padding: 0 10px;
+    margin-bottom: 20px;
+    transition: all 1s;
+}
+
+.channel>div:hover {
+    cursor: pointer;
+    box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.5);
+    filter: brightness(1.5);
+    -webkit-filter: brightness(1.5);
+}
+
+.channel img {
+    width: 100%;
+    display: block;
+}
+
+.info {
+    padding: 0 10px;
+    position: relative;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.avatar {
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.intro {
+    position: absolute;
+    top: 1px;
+    left: 60px;
+}
+
+.intro h4 {
+    color: white;
+    margin: 5px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-left: 20px;
+}
