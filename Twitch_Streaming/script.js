@@ -32,12 +32,13 @@ function showChannel(stream) {
     const avatarImg = stream.channel.logo;
     const title = stream.channel.status;
     const name = stream.channel.display_name;
+    const url = stream.channel.url;
     const viewers = stream.viewers;
 
     // 插入 DOM 中
     const channel = $('<div class="channel"><div>');
     channel.html(`
-        <div class="wrap">
+        <div class="wrap" onclick="window.open('${url}','_blank')">
             <div class="preview">
                 <img src=${preImg} alt="preview">
             </div>
@@ -47,7 +48,7 @@ function showChannel(stream) {
                     <img src=${avatarImg} alt="streamer">
                 </div>
                 <div class="intro">
-                    <h4 class="channel-name">${title.substr(0,20)} ...</h4>
+                    <h4 class="channel-name">${title} ...</h4>
                     <span class="streamer">${name}</span>
                 </div>
             </div>
@@ -62,6 +63,7 @@ function showChannel(stream) {
 // show live streams
 getLiveStreams();
 
+// infinite scroll
 $(window).scroll(function() {
     const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
 
@@ -71,3 +73,8 @@ $(window).scroll(function() {
         }
     }
 });
+
+// event listener
+// $('.wrap').click(function {
+
+// });
