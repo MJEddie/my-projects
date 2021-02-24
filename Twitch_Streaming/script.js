@@ -15,6 +15,9 @@ function getLiveStreams() {
             $.each(res.streams, function(i, stream) {
                 showChannel(stream);
             });
+        },
+        error: function(err) {
+            alert(err);
         }
     });
 }
@@ -26,21 +29,23 @@ function showChannel(stream) {
     const avatarImg = stream.channel.logo;
     const title = stream.channel.status;
     const name = stream.channel.display_name;
+    const viewers = stream.viewers;
     console.log(title, name)
         // 插入 DOM 中
-    const channel = $('<div><div>');
+    const channel = $('<div class="channel"><div>');
     channel.html(`
         <div class="wrap">
             <div class="preview">
                 <img src=${preImg} alt="preview">
             </div>
+            <div class="viewer">觀眾人數 : ${viewers}</div>
             <div class="info">
                 <div class="avatar">
                     <img src=${avatarImg} alt="streamer">
                 </div>
                 <div class="intro">
-                    <h4 class="channel-name">${title}</h4>
-                    <h4 class="streamer">${name}</h4>
+                    <h4 class="channel-name">${title.substr(0,25)} ...</h4>
+                    <span class="streamer">${name}</span>
                 </div>
             </div>
         </div>
