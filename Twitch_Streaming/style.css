@@ -88,6 +88,12 @@ body {
     margin-left: 18px;
 }
 
+.intro .channel-name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .intro span {
     color: #575A4C;
     font-size: 13px;
