@@ -12,8 +12,41 @@ function getLiveStreams() {
         dataType: 'json',
         success: function(res) {
             console.log(res)
+            $.each(res.streams, function(i, stream) {
+                showChannel(stream);
+            });
         }
     });
+}
+
+function showChannel(stream) {
+
+    // 抓取資料
+    const preImg = stream.preview.medium;
+    const avatarImg = stream.channel.logo;
+    const title = stream.channel.status;
+    const name = stream.channel.display_name;
+    console.log(title, name)
+        // 插入 DOM 中
+    const channel = $('<div><div>');
+    channel.html(`
+        <div class="wrap">
+            <div class="preview">
+                <img src=${preImg} alt="preview">
+            </div>
+            <div class="info">
+                <div class="avatar">
+                    <img src=${avatarImg} alt="streamer">
+                </div>
+                <div class="intro">
+                    <h4 class="channel-name">${title}</h4>
+                    <h4 class="streamer">${name}</h4>
+                </div>
+            </div>
+        </div>
+    `);
+
+    $('#channels').append(channel);
 }
 
 getLiveStreams();
