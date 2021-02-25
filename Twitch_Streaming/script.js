@@ -77,6 +77,7 @@ $(window).scroll(function() {
 // event listener
 $('button').click(function() {
     gameName = $(this).attr('name');
+    $(this).addClass('active').siblings().removeClass('active');
     $('#channels').html('');
 
     // reset

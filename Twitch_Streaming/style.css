@@ -36,19 +36,20 @@ header {
 
 button {
     width: 20%;
-    color: #fff;
-    background: #9147FF;
+    color: #9147FF;
+    background: #F7F7F8;
     padding: 10px;
     font-size: 16px;
-    border: none;
+    border: #9147FF 1px solid;
     border-radius: 10px;
     outline: none;
     cursor: pointer;
 }
 
-button:hover {
-    transform: scale(1.04);
-    background: rgb(146, 101, 255);
+button:hover,
+button.active {
+    color: #fff;
+    background: #9147FF;
 }
 
 .channels {
