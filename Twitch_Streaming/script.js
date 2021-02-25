@@ -1,12 +1,13 @@
 let nowIndex = 0;
 let isLoading = false;
+let gameName = 'League%20of%20Legends';
 const clientId = 'bgo21lskupamuirpz6ra5cn1ri0mta';
 
 function getLiveStreams() {
     const limit = 9;
     isLoading = true;
     $.ajax({
-        url: `https://api.twitch.tv/kraken/streams/?game=League%20of%20Legends&limit=${limit}&offset=${nowIndex}`,
+        url: `https://api.twitch.tv/kraken/streams/?game=${gameName}&limit=${limit}&offset=${nowIndex}`,
         headers: {
             'Client-ID': clientId,
             'Accept': 'application/vnd.twitchtv.v5+json'
@@ -14,7 +15,6 @@ function getLiveStreams() {
         method: 'GET',
         dataType: 'json',
         success: function(res) {
-            console.log(res)
             $.each(res.streams, function(i, stream) {
                 showChannel(stream);
             });
@@ -75,6 +75,11 @@ $(window).scroll(function() {
 });
 
 // event listener
-// $('.wrap').click(function {
+$('button').click(function() {
+    gameName = $(this).attr('name');
+    $('#channels').html('');
 
-// });
+    // reset
+    nowIndex = 0;
+    getLiveStreams();
+});
