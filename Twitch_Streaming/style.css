@@ -1,0 +1,133 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    background-color: #F7F7F8;
+}
+
+header {
+    width: 100%;
+    margin: 0 auto;
+    color: #fff;
+    background-color: #9147FF;
+    text-align: center;
+    padding: 10px;
+}
+
+.container {
+    width: 1180px;
+    margin: 0 auto;
+    padding-top: 30px;
+    display: block;
+}
+
+.category {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+
+button {
+    width: 20%;
+    color: #9147FF;
+    background: #F7F7F8;
+    padding: 10px;
+    font-size: 16px;
+    border: #9147FF 1px solid;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+}
+
+button:hover,
+button.active {
+    color: #fff;
+    background: #9147FF;
+}
+
+.channels {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.channel {
+    width: 33%;
+    padding: 10px;
+    margin-bottom: 20px;
+    transition: all 1s;
+}
+
+.channel img {
+    width: 100%;
+    display: block;
+}
+
+.wrap {
+    position: relative;
+}
+
+.wrap:hover {
+    cursor: pointer;
+    box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.5);
+    filter: brightness(1.5);
+    -webkit-filter: brightness(1.5);
+}
+
+.viewer {
+    position: absolute;
+    left: 10px;
+    bottom: 75px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+    padding: 1px;
+    border-radius: 5px;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    /* position: relative; */
+}
+
+.avatar {
+    height: 50px;
+    width: 15%;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.intro {
+    /* position: absolute; */
+    width: 85%;
+}
+
+.intro h4 {
+    color: #575A4C;
+    margin: 5px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-left: 18px;
+}
+
+.intro .channel-name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.intro span {
+    color: #575A4C;
+    font-size: 13px;
+    margin-left: 18px;
+}
