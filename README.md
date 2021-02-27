@@ -11,3 +11,8 @@
 | 07  |  Infinite Scroll Blog  | [Live Demo](https://mjeddie.github.io/JavaScript-Projects/Infinite_Scroll_Blog/index.html)  |
 | 08  |  Typing Game  | [Live Demo](https://mjeddie.github.io/JavaScript-Projects/Typing_Game/index.html)  |
 | 09  |  Speak Number Guess  | [Live Demo](https://mjeddie.github.io/JavaScript-Projects/Speak_Number_Guess/index.html)  |
+| 10  |  Sortable List  | [Live Demo](https://mjeddie.github.io/JavaScript-Projects/Sortable_List/index.html)  |
+| 11  |  GitHub Finder  | [Live Demo](https://mjeddie.github.io/JavaScript-Projects/Github_Finder/index.html)  |
+| 12  |  Weather Forecast  | [Live Demo](https://mjeddie.github.io/JavaScript-Projects/Weather_Forecast/index.html)  |
+| 13  |  Youtube Search Engine  | [Live Demo](https://mjeddie.github.io/JavaScript-Projects/Youtube_Search/index.html)  |
+| 14  |  Twitch Live Streams  | [Live Demo](https://mjeddie.github.io/JavaScript-Projects/Twitch_Streaming/index.html)  |
