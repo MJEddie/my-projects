@@ -14,3 +14,5 @@
 | 10  |  Sortable List  | [Live Demo](https://mjeddie.github.io/JavaScript-Projects/Sortable_List/index.html)  |
 | 11  |  GitHub Finder  | [Live Demo](https://mjeddie.github.io/JavaScript-Projects/Github_Finder/index.html)  |
 | 12  |  Weather Forecast  | [Live Demo](https://mjeddie.github.io/JavaScript-Projects/Weather_Forecast/index.html)  |
+| 13  |  Youtube Search Engine  | [Live Demo](https://mjeddie.github.io/JavaScript-Projects/Youtube_Search/index.html)  |
+| 14  |  Twitch Live Streams  | [Live Demo](https://mjeddie.github.io/JavaScript-Projects/Twitch_Streaming/index.html)  |
