@@ -1,6 +1,6 @@
 let nowIndex = 0;
 let isLoading = false;
-let gameName = 'League%20of%20Legends';
+let gameName = 'Just%20Chatting';
 const clientId = 'bgo21lskupamuirpz6ra5cn1ri0mta';
 
 function getLiveStreams() {
