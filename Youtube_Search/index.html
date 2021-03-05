@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- fancyBox -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Youtube Search Engine</title>
+</head>
+
+<body>
+
+    <div id="container">
+        <header>
+            <h1>Videos<span>online</span></h1>
+        </header>
+        <section>
+            <form id="search-form" name="search-form">
+                <div class="fieldcontainer">
+                    <input type="search" id="search-field" class="search-field" placeholder="Search YouTube...">
+                    <input type="submit" name="search-btn" id="search-btn" value="Search">
+                </div>
+            </form>
+
+            <ul id="results">
+                <!-- Sample content
+                <li>
+                    <div class="thumbnail">
+                        <img src="" alt="">
+                    </div>
+                    <div class="info">
+                        <h3><a href="">title</a></h3>
+                        <small>By <span class="cTitle">channelTitle</span> on videoDate</small>
+                        <p>description</p>
+                    </div>
+                </li> -->
+            </ul>
+            <div id="buttons">
+                <!-- Sample content
+                <div class="button-container">
+                    <button id="prev-button" class="next-button" data-token="prevPageToken" onclick="prevPage()"></button>
+                    <button id="prev-button" class="prev-button" data-token="nextPageToken" onclick="nextPage()"></button>
+                </div> -->
+            </div>
+        </section>
+        <footer>
+            <p>Copyright &copy; <span id="year"></span>, All Rights Reserved </p>
+        </footer>
+    </div>
+    <script>
+        $('#year').text(new Date().getFullYear());
+    </script>
+
+    <script src="script.js"></script>
+
+    <script>
+        $('[data-fancybox]').fancybox({
+            toolbar: false,
+            smallBtn: true,
+            iframe: {
+                preload: false // 自動調整 <iframe> 的寬度 / 高度
+            }
+        })
+    </script>
+
+</body>
+
+</html>
