@@ -9,7 +9,6 @@ function getUserData() {
         method: 'GET',
         dataType: 'json',
         success: function(res) {
-            console.log(res)
             let obj = {};
             obj.avatar_url = res.avatar_url !== null ? res.avatar_url : '';
             obj.name = res.name !== null ? res.name : '';
