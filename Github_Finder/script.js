@@ -9,9 +9,11 @@ function getUserData() {
         method: 'GET',
         dataType: 'json',
         success: function(res) {
+            console.log(res)
             let obj = {};
             obj.avatar_url = res.avatar_url !== null ? res.avatar_url : '';
             obj.name = res.name !== null ? res.name : '';
+            obj.account = res.login !== null ? res.login : '';
             obj.html_url = res.html_url !== null ? res.html_url : '';
             obj.public_repos = res.public_repos !== null ? res.public_repos : '';
             obj.public_gists = res.public_gists !== null ? res.public_gists : '';
@@ -53,6 +55,7 @@ function showProfile(user) {
                 <div class="col-md-3">
                     <img class="img-fluid rounded-circle mb-2" src="${user.avatar_url}">
                     <h5 class="mt-2 text-center">${user.name}</h5>
+                    <h6 class="mt-2 text-center text-secondary">${user.account}</h5>
                     <a href="${user.html_url}" target="_blank" class="btn btn-primary btn-block mb-4">View Profile</a>
                 </div>
                 <div class="col-md-9">
@@ -116,9 +119,17 @@ function showAlert(message, className) {
 }
 
 // Event linstener
+searchUser.keydown(function(e) {
+    if (e.keyCode === 13) {
+        userName = searchUser.val();
+        getUserData(userName);
+        getRepoData(userName);
+        searchUser.val('');
+    }
+});
 searchBtn.click(function() {
     userName = searchUser.val();
     getUserData(userName);
     getRepoData(userName);
     searchUser.val('');
-})
+});
