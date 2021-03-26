@@ -3,6 +3,9 @@
 }
 
 .buscar-caja {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     position: absolute;
     top: 100%;
     left: 50%;
@@ -27,13 +30,12 @@
 }
 
 .buscar-btn {
-    float: right;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
     transition: 0.4s;
     color: #333;
     cursor: pointer;
@@ -70,5 +72,17 @@
     }
     .list-group {
         margin-left: 3rem;
+    }
+}
+
+@media screen and (min-width: 576px) and (any-hover: none) {
+    .buscar-txt {
+        width: 240px;
+    }
+}
+
+@media screen and (max-width: 576px) and (any-hover: none) {
+    .buscar-txt {
+        width: 150px;
     }
 }
