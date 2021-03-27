@@ -1,102 +1,85 @@
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-    
-    body {
-        height: 100vh;
-        background-image: url(images/bg.jpg);
-        background-size: cover;
-        background-position: 50% 50%;
-        background-repeat: no-repeat;
-        z-index: 1;
-    }
-    
-    .container {
-        width: 80%;
-        margin: 0 auto;
-    }
-    
-    h1 {
-        font-size: 40px;
-    }
-    
-    .today,
-    .week-weather {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        margin: 30px 10px;
-        color: #fff;
-    }
-    
-    .today-weather {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        width: 70%;
-        padding: 10px;
-        margin-bottom: 50px;
-    }
-    
-    .today-weather img {
-        margin: 20px;
-        height: 120px;
-    }
-    
-    .today-description {
-        font-size: 30px;
-        font-weight: bold;
-        letter-spacing: 1px;
-        margin-left: 15px;
-    }
-    
-    .today-condition {
-        display: flex;
-        flex-direction: column;
-        padding: 30px;
-        font-size: 30px;
-    }
-    
-    .selector {
-        width: 30%;
-        height: 30px;
-    }
-    
-    .selector select {
-        width: 100%;
-        height: 100%;
-        background-color: rgba(173, 216, 230, 0.3);
-        padding-left: 40%;
-        border: none;
-        outline: none;
-    }
-    
-    .week-weather {
-        margin: 20px;
-        margin-top: 50px;
-        text-align: center;
-    }
-    
-    .week-weather h3 {
-        text-align: center;
-    }
-    
-    .week-weather img {
-        margin: 20px;
-        height: 80px;
-    }
-    
-    footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        padding: 15px 0;
-        background-color: rgba(169, 169, 169, 0.3);
-        color: #fff;
-        text-align: center;
-    }
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-image: url(images/bg.jpg);
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.navbar .container {
+    justify-content: center;
+}
+
+.navbar-text {
+    color: #fff;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.selector {
+    height: 30px;
+}
+
+.selector select {
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: transparent;
+    padding-left: 40%;
+    border: none;
+    outline: none;
+    appearance: none;
+}
+
+.selector option {
+    font-weight: bold;
+    background: #d3d3d3;
+}
+
+#today,
+#week {
+    color: #fff;
+    margin: 50px 10px;
+}
+
+.today-condition.col-12 {
+    margin-left: 4rem;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+#today img {
+    margin: 20px;
+    height: 120px;
+}
+
+#week>div {
+    text-align: center;
+}
+
+#week img {
+    margin: 20px;
+    height: 80px;
+}
+
+footer {
+    width: 100%;
+    padding: 15px 0;
+    background-color: rgba(169, 169, 169, 0.3);
+    color: #fff;
+}

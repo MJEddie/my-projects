@@ -41,7 +41,7 @@ function showWeather(data, cityIndex) {
     let descriptionImg = checkWeather(description);
     let date = new Date().toString();
 
-    $('.today-description').html(`
+    $('.today-condition').html(`
     <h1>${cityName}</h1>
     <h2>${date.substr(0,16)}</h2>
     ${descriptionImg}
@@ -57,7 +57,7 @@ function showWeek(data, cityIndex) {
     const weather = data.location[cityIndex].weatherElement;
     for (i = 1; i < 7; i++) {
         let timeIndex = 2 * i;
-        const day = $('<div></div>').attr('class', `day-${i}`);
+        const day = $('<div></div>').attr('class', `day-${i} col-2`);
         const description = weather[6].time[timeIndex].elementValue[0].value;
         const minT = `${weather[8].time[timeIndex].elementValue[0].value} °C`;
         const maxT = `${weather[12].time[timeIndex].elementValue[0].value} °C`;
