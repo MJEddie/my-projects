@@ -56,7 +56,7 @@ h1 {
     margin: 50px 10px;
 }
 
-.today-condition.col-12 {
+.today-condition.col-sm-12 {
     margin-left: 4rem;
     font-size: 30px;
     font-weight: bold;
@@ -82,4 +82,28 @@ footer {
     padding: 15px 0;
     background-color: rgba(169, 169, 169, 0.3);
     color: #fff;
+}
+
+@media screen and (max-width: 767px) {
+    h1 {
+        font-size: 28px;
+    }
+    .today-condition.col-sm-12 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 0;
+        text-align: center;
+    }
+    .today-condition.col-sm-12 h2 {
+        font-size: 20px;
+    }
+    #today .today-description {
+        font-size: 17px;
+    }
+    #today img {
+        margin: 20px;
+        height: 80px;
+    }
 }

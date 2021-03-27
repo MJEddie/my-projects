@@ -57,7 +57,7 @@ function showWeek(data, cityIndex) {
     const weather = data.location[cityIndex].weatherElement;
     for (i = 1; i < 7; i++) {
         let timeIndex = 2 * i;
-        const day = $('<div></div>').attr('class', `day-${i} col-2`);
+        const day = $('<div></div>').attr('class', `day-${i} col-sm-2 pb-5`);
         const description = weather[6].time[timeIndex].elementValue[0].value;
         const minT = `${weather[8].time[timeIndex].elementValue[0].value} °C`;
         const maxT = `${weather[12].time[timeIndex].elementValue[0].value} °C`;
