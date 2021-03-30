@@ -1,5 +1,5 @@
 const container = $('.container');
-const seats = $('.row .seat:not(.occupied)');
+const seats = $('.row .seat:not(.sold)');
 const count = $('#count');
 const total = $('#total');
 const movieSelect = $('#movie');
@@ -64,7 +64,7 @@ movieSelect.change(function() {
 });
 
 container.click(function(e) {
-    if ($(e.target).hasClass('seat') && !$(e.target).hasClass('occupied')) {
+    if ($(e.target).hasClass('seat') && !$(e.target).hasClass('sold')) {
         $(e.target).toggleClass('selected');
 
         updateSelectedCount();

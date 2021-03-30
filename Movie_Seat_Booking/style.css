@@ -4,7 +4,10 @@
 }
 
 body {
-    background-color: #242333;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1549226024-48875665c1ea?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=700&q=80');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -29,6 +32,8 @@ body {
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
+    text-align: center;
+    text-align-last: center;
 }
 
 .container {
@@ -49,8 +54,8 @@ body {
     background-color: #6feaf6;
 }
 
-.seat.occupied {
-    background-color: #dc3545;
+.seat.sold {
+    background-color: #8d232d;
 }
 
 .seat:nth-of-type(2) {
@@ -89,6 +94,7 @@ body {
 }
 
 .showcase li small {
+    color: #fff;
     margin-left: 2px;
 }
 
