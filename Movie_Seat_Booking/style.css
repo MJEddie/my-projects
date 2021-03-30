@@ -66,12 +66,12 @@ body {
     margin-left: 18px; // 旁邊座位
 }
 
-.seat:not(.occupied):hover {
+.seat:not(.sold):hover {
     cursor: pointer;
     transform: scale(1.2);
 }
 
-.showcase .seat:not(.occupied):hover {
+.showcase .seat:not(.sold):hover {
     cursor: default;
     transform: scale(1);
 }
