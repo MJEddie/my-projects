@@ -89,7 +89,7 @@ button.active {
     color: #fff;
     background-color: rgba(0, 0, 0, 0.5);
     font-size: 12px;
-    padding: 1px;
+    padding: 1px 6px;
     border-radius: 5px;
 }
 
