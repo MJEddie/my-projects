@@ -1,5 +1,6 @@
 :root {
-    --primary-color: #5fbaa7;
+    --primary-color: #2C4164;
+    --secondary-color: rgba(212, 146, 18, 0.8);
 }
 
 * {
@@ -28,15 +29,20 @@ p {
 
 .btn {
     color: #fff;
-    background: var(--primary-color);
+    background: var(--secondary-color);
     cursor: pointer;
     border-radius: 5px;
-    font-size: 12px;
-    padding: 5px 12px;
+    font-size: 14px;
+    padding: 5px 51px;
+}
+
+.btn:hover {
+    scale: 1.2;
 }
 
 .money-img {
     width: 150px;
+    border-radius: 22px;
 }
 
 .currency {
@@ -59,6 +65,12 @@ p {
     background-position: right 7px top 50%, 0, 0;
     background-size: 12px auto, 100%;
     background-repeat: no-repeat;
+    text-align-last: center;
+}
+
+.currency select option {
+    text-align: center;
+    text-align-last: center;
 }
 
 .currency input {
@@ -82,7 +94,7 @@ p {
 
 .rate {
     color: var(--primary-color);
-    font-size: 14px;
+    font-size: 16px;
     padding: 0 10px;
 }
 
