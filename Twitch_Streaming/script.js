@@ -48,7 +48,7 @@ function showChannel(stream) {
                     <img src=${avatarImg} alt="streamer">
                 </div>
                 <div class="intro">
-                    <h4 class="channel-name">${title} ...</h4>
+                    <h4 class="channel-name">${title}</h4>
                     <span class="streamer">${name}</span>
                 </div>
             </div>
