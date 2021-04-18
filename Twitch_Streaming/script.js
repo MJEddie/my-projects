@@ -42,7 +42,7 @@ function showChannel(stream) {
             <div class="preview">
                 <img src=${preImg} alt="preview">
             </div>
-            <div class="viewer">觀眾人數 : ${viewers}</div>
+            <div class="viewer">觀眾人數 : ${formatViewer(viewers)}</div>
             <div class="info">
                 <div class="avatar">
                     <img src=${avatarImg} alt="streamer">
@@ -58,6 +58,11 @@ function showChannel(stream) {
     $('#channels').append(channel);
     nowIndex += 9;
     isLoading = false;
+}
+
+// format viewer
+function formatViewer(viewer) {
+    return viewer >= 10000 ? (viewer / 10000).toFixed(1) + '萬' : viewer;
 }
 
 // show live streams
